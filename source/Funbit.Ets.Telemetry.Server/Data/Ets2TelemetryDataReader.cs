@@ -35,6 +35,25 @@ namespace Funbit.Ets.Telemetry.Server.Data
             }
         }
         
+        public void connectToArduino()
+        {
+
+            try
+            {
+                var gameData = _data;
+                System.IO.Ports.SerialPort Port = new System.IO.Ports.SerialPort("COM4");
+                Port.BaudRate = 9600;
+                Port.Open();
+                Port.WriteTimeout = 8000;
+                Port.Write("Craig");
+            }
+            catch (Exception ex)
+            {
+                // handle exception
+            }
+
+        }
+        
         public void Dispose()
         {
             _sharedMemory?.Dispose();
